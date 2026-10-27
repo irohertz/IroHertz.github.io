@@ -356,7 +356,7 @@ const colourPicker=(value,onChange)=>h('div',{className:'colour-choices'},PALETT
 
 class Planner extends React.Component{
  constructor(props){super(props);
- const saved=this.load();this.state=Object.assign({homes:[], outer:[], inner:[], excludedCells:[], addAlliance:[], addColour:[], addLocked:[], limitOuter:true}, saved);
+ const saved=this.load();this.state=Object.assign({homes:[], radius:8.7, panX:0, panY:0, mode:'place', mobileMove:false}, saved);
  this.canvas=null;this.ctx=null;this.w=0;this.h=0;this.dpr=1;this.drag=null;this.frame=null;this.needsPaint=true;this.lastMove={x:0,y:0};this.onResize=this.onResize.bind(this);this.mouseDown=this.mouseDown.bind(this);this.mouseMove=this.mouseMove.bind(this);this.mouseUp=this.mouseUp.bind(this);this.wheel=this.wheel.bind(this);this.keyDown=this.keyDown.bind(this);this.touchStart=this.touchStart.bind(this);this.touchMove=this.touchMove.bind(this);this.touchEnd=this.touchEnd.bind(this);this.touchCancel=this.touchCancel.bind(this);this.touchSession=null;}
  load(){try{const s=localStorage.getItem('HoTd-territory-planner-v1');return s?JSON.parse(s):null}catch(_){return null}}
  save(){try{const {homes,outer,inner,excludedCells,addAlliance,addColour,addLocked,limitOuter,blockInner,showGrid,showRing,showLabels,showZones}=this.state;localStorage.setItem('HoTd-territory-planner-v1',JSON.stringify({homes,outer,inner,excludedCells,addAlliance,addColour,addLocked,limitOuter,blockInner,showGrid,showRing,showLabels,showZones}))}catch(_){}}
